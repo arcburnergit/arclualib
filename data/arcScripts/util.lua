@@ -35,6 +35,7 @@ function mods.arcutil.vter(cvec)
         if i < n then return cvec[i] end
     end
 end
+local vter = mods.arcutil.vter
 
 -- Find ID of a room at the given location
 function mods.arcutil.get_room_at_location(shipManager, location, includeWalls)

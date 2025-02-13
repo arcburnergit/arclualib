@@ -54,6 +54,8 @@ end
 local function logic()
     script.on_internal_event(Defines.InternalEvents.DAMAGE_BEAM, function(shipManager, projectile, location, damage, realNewTile, beamHitType)
         local teleportBeam = weaponInfo[projectile.extend.name]["teleportBeam"]
+        local otherShip = Hyperspace.Global.GetInstance():GetShipManager((shipManager.iShipId + 1)%2)
+        local weaponRoomID = otherShip:GetSystemRoom(3)
         if teleportBeam.doTeleport then
             for i, crewmem in ipairs(get_ship_crew_point(shipManager, location.x, location.y)) do
                 if not crewmem:IsDrone() and userdata_table(crewmem, "mods.arc.crewAbduction").tpTime == nil then
